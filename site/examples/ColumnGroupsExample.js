@@ -9,6 +9,14 @@ var ColumnGroup = FixedDataTable.ColumnGroup;
 var PropTypes = React.PropTypes;
 var Table = FixedDataTable.Table;
 
+function headerRendererFirstName(cellData) {
+  return <span style={{color: '#000'}}>COL HEADER</span>;
+}
+
+function firstColumnGroupHeaderRenderer() {
+  return <span style={{color: '#000'}}>CUSTOM GROUP HEADER</span>;
+}
+
 var ColumnGroupsExample = React.createClass({
   propTypes: {
     onContentDimensionsChange: PropTypes.func,
@@ -35,12 +43,14 @@ var ColumnGroupsExample = React.createClass({
         overflowY={controlledScrolling ? "hidden" : "auto"}>
         <ColumnGroup
           fixed={true}
+          groupHeaderRenderer={firstColumnGroupHeaderRenderer}
           label="Name">
           <Column
             fixed={true}
             dataKey="firstName"
             label="First Name"
             width={150}
+            headerRenderer={headerRendererFirstName}
           />
           <Column
             fixed={true}
